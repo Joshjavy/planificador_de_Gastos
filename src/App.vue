@@ -1,11 +1,13 @@
 <script setup>
   import Presupuesto from './components/Presupuesto.vue'
+
+  
 </script>
 
 <template>
   <div>
     <header>
-    <h1>planificador de gastos</h1>
+    <h1>planificador de Gastos</h1>
     <div
       class="contenedor-header contenedor sombra"
     >
@@ -23,7 +25,6 @@
 </template>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap');
   :root{
     --azul: #3b82f6;
     --blanco: #FFF;
@@ -46,7 +47,7 @@
 
 body{
   font-size: 1.6rem;
-  font-size: "lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   background-color: var(--gris-claro);
 }
 
