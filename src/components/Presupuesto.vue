@@ -91,9 +91,7 @@
         background-color: #1048a4;
         cursor: pointer;
     }
-    .nuevo-presupuesto{
-
-    }
+    
 
 
 </style>
