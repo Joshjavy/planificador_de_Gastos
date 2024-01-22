@@ -1,7 +1,7 @@
 <script setup>
   import Presupuesto from './components/Presupuesto.vue'
 
-  
+
 </script>
 
 <template>
@@ -52,7 +52,7 @@ body{
 }
 
 h1{
-  font-size:  4rem;
+  font-size:4rem;
 }
 
 h2{
