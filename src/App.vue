@@ -3,10 +3,13 @@
   import Presupuesto from './components/Presupuesto.vue'
   import ControlPresupuesto from './components/ControlPresupuesto.vue';
   const presupuesto =ref(0);
+  const disponible = ref(0);
+
+
 
   const definirPresupuesto = cantidad =>{
-    presupuesto.value= cantidad
-    console.log(cantidad);
+    presupuesto.value = cantidad;
+    disponible.value  = cantidad;
   }
 
 </script>
@@ -25,6 +28,8 @@
 
       <ControlPresupuesto
         v-else
+        :presupuesto="presupuesto"
+        :disponible="disponible"
       />
     </div>
     
