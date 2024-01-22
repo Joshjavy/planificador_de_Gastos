@@ -27,8 +27,8 @@
   :root{
     --azul: #3b82f6;
     --blanco: #FFF;
-    --gris-claro: #f5f5f5;
-    --gris: #94a3b8;
+    --gris-claro: #e0e0e0;
+    --gris: #bdbdbd;
     --gris-oscuro: #64748b;
     --negro:#000;
   }
