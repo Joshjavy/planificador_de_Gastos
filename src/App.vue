@@ -23,6 +23,11 @@
     modal.mostrar=true;
     modal.animar=true;
   }
+
+  const cerrarModal=()=>{
+    modal.mostrar=false;
+    modal.animar=false;
+  }
 </script>
 
 <template>
@@ -53,6 +58,7 @@
     </div>
     <Modal
       v-if="modal.mostrar"
+      @cerrar-modal="cerrarModal"
     />
   </main>
 
