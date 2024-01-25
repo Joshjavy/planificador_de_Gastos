@@ -1,11 +1,33 @@
 <script setup>
     import cerrarModal from '../assets/img/cerrar.svg'
     const emit = defineEmits(['cerrar-modal']);
+
     const props = defineProps({
         modal:{
             type:Object,
             required:true,
-        }
+        },
+
+        nombre:{
+            type:String,
+            required:true,
+        },
+        cantidad:{
+            type:[String, Number],
+            required:true,
+        },
+        categoria:{
+            type:[String, Number],
+            required:true,
+        },
+        id:{
+            type:[String, Number],
+            required:true
+        },
+        fecha:{
+            type:String,
+            required:true,
+        },
     })
 </script>
 
@@ -30,17 +52,23 @@
 
                 <div class="campo">
                     <label for="nombre">Nombre Gasto:</label>
-                    <input type="text" id="nombre" placeholder="Nombdel del gasto" />
+                    <input type="text" id="nombre" placeholder="Nombdel del gasto"
+                        :value="nombre"
+                    />
 
                 </div>
                 <div class="campo">
                     <label for="cantidad">cantidad :</label>
-                    <input type="number" id="cantidad" placeholder="cantidad del gasto" />
+                    <input type="number" id="cantidad" placeholder="cantidad del gasto" 
+                        :value="cantidad"
+                    />
 
                 </div>
                 <div class="campo">
                     <label for="categoria">categoria</label>
-                    <select id="categoria">
+                    <select id="categoria" 
+                        :value="categoria"
+                    >
                         <option value="">-- Seleccione --</option>
                         <option value="ahorro">Ahorro</option>
                         <option value="comida">comida</option>
