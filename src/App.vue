@@ -51,6 +51,15 @@
       id: generarId()
       
     })
+    cerrarModal();
+    //reiniciar objeto
+    Object.assign(gasto,{
+      nombre:'',
+      cantidad:'',
+      categoria:'',
+      id:null,
+      fecha:Date.now(), 
+    })
   }
 
 </script>
