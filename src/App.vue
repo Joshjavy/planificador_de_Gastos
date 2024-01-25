@@ -13,7 +13,7 @@
   const disponible = ref(0);
   
   const gasto = reactive({
-    nombre:'Gasto Ejemplo',
+    nombre:'',
     cantidad:'',
     categoria:'',
     id:null,

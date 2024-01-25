@@ -1,6 +1,10 @@
 <script setup>
     import cerrarModal from '../assets/img/cerrar.svg'
-    const emit = defineEmits(['cerrar-modal']);
+    const emit = defineEmits(['cerrar-modal',
+    'update:nombre',
+    'update:cantidad',
+    'update:categoria',
+    ]);
 
     const props = defineProps({
         modal:{
@@ -54,6 +58,7 @@
                     <label for="nombre">Nombre Gasto:</label>
                     <input type="text" id="nombre" placeholder="Nombdel del gasto"
                         :value="nombre"
+                        @input="$event=>$emit('update:nombre',$event.target.value)"
                     />
 
                 </div>
@@ -61,6 +66,7 @@
                     <label for="cantidad">cantidad :</label>
                     <input type="number" id="cantidad" placeholder="cantidad del gasto" 
                         :value="cantidad"
+                        @input="$event=>$emit('update:cantidad',+$event.target.value)"
                     />
 
                 </div>
@@ -68,6 +74,7 @@
                     <label for="categoria">categoria</label>
                     <select id="categoria" 
                         :value="categoria"
+                        @input="$event=>$emit('update:categoria',$event.target.value)"
                     >
                         <option value="">-- Seleccione --</option>
                         <option value="ahorro">Ahorro</option>
