@@ -40,6 +40,12 @@
     },300);
     
   }
+
+  const guardarGasto=()=>{
+    console.log('guardnado gasto')
+    console.log(gasto);
+  }
+
 </script>
 
 <template>
@@ -71,6 +77,7 @@
     <Modal
       v-if="modal.mostrar"
       @cerrar-modal="cerrarModal"
+      @guardar-gasto="guardarGasto"
       :modal="modal"
       v-model:nombre="gasto.nombre"
       v-model:cantidad="gasto.cantidad"

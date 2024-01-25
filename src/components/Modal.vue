@@ -5,7 +5,7 @@ import { ref } from 'vue';
 
     const error = ref('');
 
-    const emit = defineEmits(['cerrar-modal',
+    const emit = defineEmits(['cerrar-modal','guardar-gasto',
     'update:nombre',
     'update:cantidad',
     'update:categoria',
@@ -59,9 +59,9 @@ import { ref } from 'vue';
             },2000)
             return
         }
-        //
-
         //Guardar datos
+        emit('guardar-gasto');
+
     }
 </script>
 
