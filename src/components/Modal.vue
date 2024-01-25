@@ -1,5 +1,10 @@
 <script setup>
+import { ref } from 'vue';
+    import Alerta from './Alerta.vue';
     import cerrarModal from '../assets/img/cerrar.svg'
+
+    const error = ref('');
+
     const emit = defineEmits(['cerrar-modal',
     'update:nombre',
     'update:cantidad',
@@ -33,6 +38,31 @@
             required:true,
         },
     })
+
+    const agregarGasto=()=>{
+        //Validar formulario
+        const {nombre,cantidad,categoria} = props;
+        if([nombre,cantidad,categoria].includes('')){
+            error.value='todos los campos son requeridos'
+            setTimeout(()=>{
+                error.value=''
+            },2000)
+            return
+        }
+
+        //Validar la cantidad
+        if(cantidad <= 0){
+
+            error.value='cantidad no válido'
+            setTimeout(()=>{
+                error.value=''
+            },2000)
+            return
+        }
+        //
+
+        //Guardar datos
+    }
 </script>
 
 <template>
@@ -49,10 +79,12 @@
             :class="[modal.animar ? 'animar':'cerrar']"
         >
             <form
-
-                class="nuevo-gasto"
+                class="nuevo-gasto "
+                @submit.prevent="agregarGasto"
             >
                 <legend>Añadir Gasto</legend>
+
+                <Alerta v-if="error"> {{ error }}</Alerta>
 
                 <div class="campo">
                     <label for="nombre">Nombre Gasto:</label>
