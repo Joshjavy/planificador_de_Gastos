@@ -16,7 +16,10 @@ import { ref } from 'vue';
             type:Object,
             required:true,
         },
-
+        disponible:{
+            type:Number,
+            required:true, 
+        },
         nombre:{
             type:String,
             required:true,
@@ -41,7 +44,7 @@ import { ref } from 'vue';
 
     const agregarGasto=()=>{
         //Validar formulario
-        const {nombre,cantidad,categoria} = props;
+        const {nombre,cantidad,categoria,disponible} = props;
         if([nombre,cantidad,categoria].includes('')){
             error.value='todos los campos son requeridos'
             setTimeout(()=>{
@@ -60,7 +63,16 @@ import { ref } from 'vue';
             return
         }
         //Guardar datos
-        emit('guardar-gasto');
+        if(disponible >= cantidad ){
+            emit('guardar-gasto');
+        }else{
+            
+            error.value='Saldo insuficiente';
+            setTimeout(()=>{
+                error.value=''
+            },2000)
+        }
+            
 
     }
 </script>
