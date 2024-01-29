@@ -26,6 +26,7 @@
             required:true,
         }
     });
+    const emit = defineEmits(['seleccionar-gasto']);
 </script>
 
 <template>
@@ -38,7 +39,9 @@
                 />
             <div class="detalles">
                 <p class="categoria">{{  gasto.categoria }}</p>
-                <p class="nombre">{{ gasto.nombre }}</p>
+                <p class="nombre"
+                    @click="$event=>emit('seleccionar-gasto',gasto.id)"
+                >{{ gasto.nombre }}</p>
 
                 <p class="fecha">Fecha: <span>{{ formatearFecha(gasto.fecha) }}</span></p>
             </div>

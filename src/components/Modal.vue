@@ -124,10 +124,10 @@ import { ref } from 'vue';
                         <option value="ahorro">Ahorro</option>
                         <option value="comida">comida</option>
                         <option value="casa">casa</option>
-                        <option value="transporte">transporte</option>
+                        <option value="gastos">transporte</option>
                         <option value="ocio">ocio</option>
                         <option value="salud">salud</option>
-                        <option value="suscripcciones">Suscripciones</option>
+                        <option value="suscripciones">Suscripciones</option>
                     </select>
                 </div>
                 <input type="submit"
