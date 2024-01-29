@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref,computed } from 'vue';
     import Alerta from './Alerta.vue';
     import cerrarModal from '../assets/img/cerrar.svg'
 
@@ -83,9 +83,12 @@ import { ref } from 'vue';
                 },2000)
             }
         }
-            
-
     }
+
+    const isEditing=computed(()=>{
+        return props.id;
+    })
+
 </script>
 
 <template>
@@ -105,7 +108,10 @@ import { ref } from 'vue';
                 class="nuevo-gasto "
                 @submit.prevent="agregarGasto"
             >
-                <legend>Añadir Gasto</legend>
+                <legend>
+                    {{ isEditing? 'Editar Gasto':'Añadir Gasto' }}
+                    
+                </legend>
 
                 <Alerta v-if="error"> {{ error }}</Alerta>
 
@@ -142,7 +148,7 @@ import { ref } from 'vue';
                     </select>
                 </div>
                 <input type="submit"
-                    value="Registrar Gasto"
+                    :value="[isEditing?'Actualizar Gasto':'Registrar Gasto']"
                     class=""
                     />
             </form>
