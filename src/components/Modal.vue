@@ -33,7 +33,7 @@ import { ref } from 'vue';
             required:true,
         },
         id:{
-            type:[String, Number],
+            type:[String, null],
             required:true
         },
         fecha:{
@@ -42,9 +42,10 @@ import { ref } from 'vue';
         },
     })
 
+    const old =props.cantidad;
     const agregarGasto=()=>{
         //Validar formulario
-        const {nombre,cantidad,categoria,disponible} = props;
+        const {nombre,cantidad,categoria,disponible,id} = props;
         if([nombre,cantidad,categoria].includes('')){
             error.value='todos los campos son requeridos'
             setTimeout(()=>{
@@ -52,25 +53,35 @@ import { ref } from 'vue';
             },2000)
             return
         }
-
         //Validar la cantidad
         if(cantidad <= 0){
-
             error.value='cantidad no válido'
             setTimeout(()=>{
                 error.value=''
             },2000)
             return
         }
-        //Guardar datos
-        if(disponible >= cantidad ){
-            emit('guardar-gasto');
+        //validar que el usuario no gaste de lo disponible
+        if(id){
+            //tomar en cuenta el gasto ya realizado
+            if(cantidad > old + disponible){
+                error.value='Saldo insuficiente';
+                setTimeout(()=>{
+                    error.value=''
+                },2000)
+            }else{
+                emit('guardar-gasto');
+            }
         }else{
-            
-            error.value='Saldo insuficiente';
-            setTimeout(()=>{
-                error.value=''
-            },2000)
+            if(disponible >= cantidad ){
+                emit('guardar-gasto');
+            }else{
+                
+                error.value='Saldo insuficiente';
+                setTimeout(()=>{
+                    error.value=''
+                },2000)
+            }
         }
             
 
