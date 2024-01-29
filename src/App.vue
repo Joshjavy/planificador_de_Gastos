@@ -33,6 +33,13 @@
     deep:true,
   })
 
+  watch(modal,()=>{
+      if(!modal.mostrar){
+        reiniciarObjeto();
+    }
+  },{
+    deep:true
+  })
 
   const definirPresupuesto = cantidad =>{
     presupuesto.value = cantidad;
@@ -63,6 +70,10 @@
     })
     cerrarModal();
     //reiniciar objeto
+    reiniciarObjeto();
+  }
+
+  const reiniciarObjeto=()=>{
     Object.assign(gasto,{
       nombre:'',
       cantidad:'',
@@ -71,7 +82,6 @@
       fecha:Date.now(), 
     })
   }
-
   const seleccionarGasto=id=>{
     const gastoEditar=gastos.value.filter(gasto=> gasto.id === id)[0];
     Object.assign(gasto, gastoEditar);
