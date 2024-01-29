@@ -62,12 +62,21 @@
   }
 
   const guardarGasto=()=>{
-    console.log(gasto);
-    gastos.value.push({
-      ...gasto,
-      id: generarId()
+    if(gasto.id){
+      //editando
+      const {id} = gasto;
+      const i = gastos.value.findIndex(gasto => gasto.id === id)
+      gastos.value[i]={ ...gasto}
       
-    })
+    }else{
+      //registrando
+      gastos.value.push({
+        ...gasto,
+        id: generarId()
+      
+      })
+    }
+    
     cerrarModal();
     //reiniciar objeto
     reiniciarObjeto();
