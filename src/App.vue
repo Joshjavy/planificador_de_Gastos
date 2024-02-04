@@ -97,6 +97,14 @@
     mostraModal();
   }
 
+  const eliminarGasto=()=>{
+    if(confirm('Eliminar el registro seleccionado?')){
+    gastos.value=gastos.value.filter(gastoState => gastoState.id !== gasto.id);
+      cerrarModal();
+      reiniciarObjeto();
+    }
+
+  }
 </script>
 
 <template>
@@ -145,6 +153,7 @@
       v-if="modal.mostrar"
       @cerrar-modal="cerrarModal"
       @guardar-gasto="guardarGasto"
+      @eliminar-gasto="eliminarGasto"
       :modal="modal"
       :disponible="disponible"
       :id="gasto.id"

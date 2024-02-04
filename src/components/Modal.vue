@@ -5,7 +5,7 @@ import { ref,computed } from 'vue';
 
     const error = ref('');
 
-    const emit = defineEmits(['cerrar-modal','guardar-gasto',
+    const emit = defineEmits(['cerrar-modal','guardar-gasto','eliminar-gasto',
     'update:nombre',
     'update:cantidad',
     'update:categoria',
@@ -156,6 +156,7 @@ import { ref,computed } from 'vue';
                 type="button"
                 class="btn-eliminar"
                 v-if="isEditing"
+                @click="$event=>$emit('eliminar-gasto')"
             >
                 Eliminat gasto
             </button>
